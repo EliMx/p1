@@ -1,0 +1,109 @@
+﻿@model p1.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrarse";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="container" id="registro" style="background-color:#fff">
+            <form class="form-horizontal" role="form">
+                <h2>Cree una cuenta nueva</h2>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Nombre</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" placeholder="Nombre" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="primerApellido" class="col-sm-3 control-label">Primer Apellido</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="primerApellido" placeholder="Primer Apellido" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="segundoApellido" class="col-sm-3 control-label">Segundo Apellido</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="segundoApellido" placeholder="Segundo Apellido" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Contraseña</label>
+                    <div class="col-sm-9">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmarPassword" class="col-sm-3 control-label">Confirmar Contraseña</label>
+                    <div class="col-sm-9">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Fecha de nacimiento</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="birthDate" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country" class="col-sm-3 control-label">Estado</label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option>Sonora</option>
+                        </select>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Genero</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="femaleRadio" value="Femenino">Female
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="maleRadio" value="Male">Masculino
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="uncknownRadio" value="Unknown">Prefiero no contestar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">Acepto los <a href="#">terminos</a>
+                            </label>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <div class="col-sm-5 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block" value="Registrarse">Registrarse</button>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
